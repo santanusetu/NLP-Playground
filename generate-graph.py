@@ -1,18 +1,27 @@
 import os
 from random import randint
+from datetime import datetime, timedelta
 
-# Set your desired start and end dates (in terms of days ago) and the maximum number of commits per day
-startdate = 2300
-enddate = 2400
-max_commits_per_day = 11
+# Set your desired start and end dates in yyyy-mm-dd format and the maximum number of commits per day
+start_date_str = "2022-01-01"
+end_date_str = "2022-01-07"
+max_commits_per_day = 7
 
-for day in range(startdate, enddate):
+# Convert start and end date strings to datetime objects
+start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
+end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
+
+# Loop through the date range
+current_date = start_date
+while current_date < end_date:
     # Generate a random number of commits for the current day, up to the specified maximum
-    for commits in range(0, randint(1, max_commits_per_day)):
-        current_day = str(day) + ' days ago'
+    for _ in range(0, randint(1, max_commits_per_day)):
+        current_day_str = current_date.strftime("%Y-%m-%d")
         with open('file.txt', 'a') as file:
-            file.write(current_day + '\n')  # Add a newline character for better readability
+            file.write(current_day_str + '\n')  # Add a newline character for better readability
         os.system('git add .')
-        os.system('git commit --date="' + current_day + '" -m "commit"')
+        os.system('git commit --date="{}" -m "commit"'.format(current_day_str))
+
+    current_date += timedelta(days=1)
 
 os.system('git push -u origin main ')
