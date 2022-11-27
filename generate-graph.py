@@ -3,9 +3,9 @@ from random import randint
 from datetime import datetime, timedelta
 
 # Set your desired start and end dates in yyyy-mm-dd format and the maximum number of commits per day
-start_date_str = "2022-01-27"
-end_date_str = "2022-01-29"
-max_commits_per_day = 2
+start_date_str = "2022-11-27"
+end_date_str = "2022-12-29"
+max_commits_per_day = 4
 
 # Convert start and end date strings to datetime objects
 start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
