@@ -1,6 +1,6 @@
 # NLP-Playground
 
-### ChatGPT Cheatsheet
+### 🚀 ChatGPT Cheatsheet
 
 A quick reference guide for using ChatGPT: 
 
